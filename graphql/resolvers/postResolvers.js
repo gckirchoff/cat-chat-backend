@@ -5,6 +5,7 @@ const checkAuth = require('../../utils/checkAuth');
 const { GraphQLUpload } = require('graphql-upload');
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
 
 const sharp = require('sharp');
 

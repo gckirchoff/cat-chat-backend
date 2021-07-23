@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const express = require('express');
 const { graphqlUploadExpress } = require('graphql-upload');
+const cors = require('cors');
 
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
@@ -52,6 +53,7 @@ async function startServer() {
   // This middleware should be added before calling `applyMiddleware`.
   app.use(graphqlUploadExpress());
   app.use(express.static('public'));
+  app.use(cors());
 
   server.applyMiddleware({ app });
 

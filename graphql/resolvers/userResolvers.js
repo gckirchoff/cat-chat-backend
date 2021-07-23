@@ -20,7 +20,6 @@ const generateToken = (user) => {
       expiresIn: '1h',
     }
   );
-  console.log('Token from generateToken', token);
   return token;
 };
 
@@ -28,7 +27,6 @@ module.exports = {
   Mutation: {
     async login(_, { userName, password }) {
       const { errors, valid } = validateLoginInput(userName, password);
-      console.log(UserInputError);
 
       if (!valid) {
         console.log('1');
