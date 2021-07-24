@@ -34,16 +34,24 @@ module.exports = {
     },
   },
   Mutation: {
-    async createPost(_, { body }, context) {
+    async createPost(_, { body, imageUrl }, context) {
       try {
+        console.log('hi');
         const user = checkAuth(context);
 
         if (body.trim() === '') {
           throw new Error('Post body must not be empty.');
         }
 
+        if (imageUrl.trim() === '') {
+          throw new Error('A post must have an image.');
+        }
+
+        console.log(imageUrl);
+
         const newPost = new Post({
           body,
+          imageUrl,
           user: user.id,
           userName: user.userName,
           createdAt: new Date().toISOString(),
