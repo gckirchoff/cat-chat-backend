@@ -33,8 +33,6 @@ mongoose
   })
   .then(() => console.log('DB CONNECTION SUCCESS'));
 
-const PORT = process.env.PORT || 3005;
-
 // server.listen(port, () => {
 //   console.log(`App is running on port ${port}...`);
 // });
@@ -57,9 +55,8 @@ async function startServer() {
 
   server.applyMiddleware({ app });
 
-  await new Promise((r) => app.listen({ port: PORT }, r));
-  console.log(PORT);
-
+  await new Promise((r) => app.listen({ port: process.env.PORT || 3005 }, r));
+  const PORT = process.env.PORT || 3005;
   console.log(
     `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
   );
