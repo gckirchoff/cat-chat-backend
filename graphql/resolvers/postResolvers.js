@@ -36,7 +36,6 @@ module.exports = {
   Mutation: {
     async createPost(_, { body, imageUrl }, context) {
       try {
-        console.log('hi');
         const user = checkAuth(context);
 
         if (body.trim() === '') {
