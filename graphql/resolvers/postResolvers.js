@@ -34,7 +34,7 @@ module.exports = {
     },
   },
   Mutation: {
-    async createPost(_, { body, imageUrl }, context) {
+    async createPost(_, { body, imageUrl, goodness }, context) {
       try {
         const user = checkAuth(context);
 
@@ -46,11 +46,12 @@ module.exports = {
           throw new Error('A post must have an image.');
         }
 
-        console.log(imageUrl);
+        console.log(goodness);
 
         const newPost = new Post({
           body,
           imageUrl,
+          goodness,
           user: user.id,
           userName: user.userName,
           createdAt: new Date().toISOString(),
